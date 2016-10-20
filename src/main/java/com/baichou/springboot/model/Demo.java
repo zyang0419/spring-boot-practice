@@ -1,5 +1,12 @@
 package com.baichou.springboot.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "t_demo")
 public class Demo {
     /**
      *
@@ -10,7 +17,10 @@ public class Demo {
      *
      *
      */
+    @Id
+    @GeneratedValue
     private long id;//主键.
+
     private String name;//测试名称.
 
     public String getName() {
@@ -28,6 +38,5 @@ public class Demo {
     public void setId(long id) {
         this.id = id;
     }
-
 
 }

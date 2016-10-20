@@ -22,6 +22,7 @@
     <springloaded.version>1.2.4.RELEASE</springloaded.version>
     <servlet-api.verion>3.1.0</servlet-api.verion>
     <junit.version>4.12</junit.version>
+    <fastjson.version>1.2.18</fastjson.version>
 
     <!-- 配置你的tomcat版本  不配置tomcat版本的话springboot默认会使用8.x版本的tomcat-->
 
@@ -59,6 +60,20 @@
       <artifactId>spring-boot-starter-thymeleaf</artifactId>
     </dependency>
 
+    <!-- jpa -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+
+    <!-- mysql -->
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+
+
+
     <!-- 热启动　每次更改都会重新启动 -->
     <!--<dependency>
       <groupId>org.springframework.boot</groupId>
@@ -72,6 +87,13 @@
       <artifactId>javax.servlet-api</artifactId>
       <version>${servlet-api.verion}</version>
       <!-- <scope>provided</scope>  -->
+    </dependency>
+
+    <!-- fastjson -->
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>${fastjson.version}</version>
     </dependency>
 
     <!-- junit -->
@@ -103,8 +125,18 @@
             <version>${springloaded.version}</version>
           </dependency>
         </dependencies>
-
       </plugin>
+
+      <!-- Spring Boot在编译的时候，是有默认JDK版本的
+           添加了plugin之后，需要右键Maven à Update Projects,这时候你可以看到工程根目录下的JRE System Library 版本更改了。
+       -->
+      <!--<plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>-->
 
     </plugins>
 
@@ -145,7 +177,5 @@
       <url>http://repo.spring.io/milestone</url>
     </pluginRepository>
   </pluginRepositories>
-
-
 
 </project>

@@ -16,8 +16,27 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController  //等价于@Controller 和 @ResponseBody
 public class App {
 
+
+    //启用fastjson
+    /*@Bean
+    public HttpMessageConverters fastJsonHttpMessageConverters() {
+        FastJsonHttpMessageConverter fastConverter = new FastJsonHttpMessageConverter();
+        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+        fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
+        fastConverter.setFastJsonConfig(fastJsonConfig);
+        HttpMessageConverter<?> converter = fastConverter;
+        return new HttpMessageConverters(converter);
+    }*/
+
     public static void main(String[] args) {
         SpringApplication.run(App.class,args);
+
+
+//        ApplicationContext ctx = SpringApplication.run(Application.class, args);
+//        SpringApplication app = new SpringApplication(App.class);
+//        app.run(args);
+//        SpringApplication.run("classpath:/META-INF/application-context.xml",args);
+
     }
 
     //修改端口

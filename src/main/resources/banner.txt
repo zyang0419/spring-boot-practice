@@ -1,0 +1,12 @@
+#在classpath下加入banner.txt 来定义程序启动时要输出的内容
+
+
+spring boot 正在启动中，请稍后***********************
+#MANIFEST.MF中的版本号例如1.0
+#${application.version}
+#格式化后的版本号，就是加了个V,例如V1.0…
+#${application.formatted-version}
+#springboot版本号，例如1.2.2.RELEASE
+${spring-boot.version}
+#格式化后的Springboot版本号，例如V1.2.2.RELEASE………
+${spring-boot.formatted-version}
