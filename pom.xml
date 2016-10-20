@@ -20,6 +20,7 @@
     <java.version>1.8</java.version>
     <springboot.version>1.4.1.RELEASE</springboot.version>
     <springloaded.version>1.2.4.RELEASE</springloaded.version>
+    <servlet-api.verion>3.1.0</servlet-api.verion>
     <junit.version>4.12</junit.version>
 
     <!-- 配置你的tomcat版本  不配置tomcat版本的话springboot默认会使用8.x版本的tomcat-->
@@ -65,6 +66,15 @@
       <optional>true</optional>
     </dependency>-->
 
+    <!-- servet-api -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet-api.verion}</version>
+      <!-- <scope>provided</scope>  -->
+    </dependency>
+
+    <!-- junit -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

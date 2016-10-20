@@ -25,7 +25,10 @@ public class Application {
         return "hello world";
     }
 
-
+    @RequestMapping("/zeroException")
+    public int zeroException(){
+        return 100/0;
+    }
 
     @RequestMapping("/users/{username}")
     public String userProfile(@PathVariable("username") String username) {
