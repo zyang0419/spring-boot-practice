@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 //表示启用spring-boot默认配置　spring-boot根据pom中的依赖jar包进行默认配置。
 // 其中@SpringBootApplication申明让spring boot自动给程序进行必要的配置，
 // 等价于以默认属性使用@Configuration，@EnableAutoConfiguration和@ComponentScan
-@SpringBootApplication
+//SpringBoot项目的Bean装配默认规则是根据Application类所在的包位置从上往下扫描
+//使用scanBasePackages属性进行指定要扫描的包以及要扫描的类
+@SpringBootApplication(scanBasePackages = {
+        "com.baichou",
+        "org.help"
+})
 @RestController  //等价于@Controller 和 @ResponseBody
 public class App {
 
@@ -38,6 +43,7 @@ public class App {
     }*/
 
     public static void main(String[] args) {
+//        System.setProperty("spring.devtools.restart.enabled", "false");
         SpringApplication.run(App.class,args);
 
 

@@ -39,4 +39,11 @@ public class Demo {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Demo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -1,5 +1,6 @@
 package com.baichou.springboot.exception;
 
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.servlet.http.HttpServletRequest;
@@ -7,10 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Created by root on 16-10-20.
  */
+
+@ControllerAdvice
 public class GlobalDefaultExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
-
     public void defaultErrorHandler(HttpServletRequest req, Exception e)  {
 
 //      // If the exception is annotated with @ResponseStatus rethrow it and let
@@ -39,15 +41,9 @@ public class GlobalDefaultExceptionHandler {
 
 //      return mav;
 
-
-
         //打印异常信息：
-
         e.printStackTrace();
-
         System.out.println("GlobalDefaultExceptionHandler.defaultErrorHandler()");
-
-
 
        /*
 
