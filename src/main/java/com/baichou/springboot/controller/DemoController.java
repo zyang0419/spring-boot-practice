@@ -1,11 +1,14 @@
 package com.baichou.springboot.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baichou.springboot.model.Demo;
 import com.baichou.springboot.service.DemoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/demo")
@@ -13,6 +16,40 @@ public class DemoController {
 
     @Autowired
     private DemoService demoService;
+    @Autowired
+    private RestTemplate restTemplate;
+
+    @RequestMapping("/rest")
+    public String rest(){
+        String url = "http://localhost:9090/demo/json";
+        JSONObject json = restTemplate.getForEntity(url, JSONObject.class).getBody();
+        return json.toJSONString();
+    }
+
+    @RequestMapping("/json")
+    public Object genJson(){
+        JSONObject json = new JSONObject();
+        json.put("descp", "this is spring rest template sample");
+        return json;
+    }
+
+    /**********HTTP POST method**************/
+    @RequestMapping("/postApi")
+    public Object iAmPostApi(@RequestBody JSONObject parm){
+        System.out.println(parm.toJSONString());
+        parm.put("result", "hello post");
+        return parm;
+    }
+
+    @RequestMapping("/post")
+    public Object testPost(){
+        String url = "http://localhost:9090/demo/postApi";
+        JSONObject postData = new JSONObject();
+        postData.put("descp", "request for post");
+        JSONObject json = restTemplate.postForEntity(url, postData, JSONObject.class).getBody();
+        return json.toJSONString();
+    }
+
 
     /**
      * 测试保存数据方法.

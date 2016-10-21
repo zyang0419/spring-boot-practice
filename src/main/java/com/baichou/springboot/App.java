@@ -2,6 +2,7 @@ package com.baichou.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
         "org.help"
 })
 @RestController  //等价于@Controller 和 @ResponseBody
+@ServletComponentScan//这个就是扫描相应的Servlet包;
 public class App {
 
     /**

@@ -23,6 +23,7 @@
     <servlet-api.verion>3.1.0</servlet-api.verion>
     <junit.version>4.12</junit.version>
     <fastjson.version>1.2.18</fastjson.version>
+    <druid.version>1.0.26</druid.version>
 
     <!-- 配置你的tomcat版本  不配置tomcat版本的话springboot默认会使用8.x版本的tomcat-->
 
@@ -72,7 +73,11 @@
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
 
-
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>druid</artifactId>
+      <version>${druid.version}</version>
+    </dependency>
 
     <!-- 热启动　每次更改都会重新启动 -->
     <!--<dependency>
