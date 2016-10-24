@@ -1,7 +1,9 @@
 package com.baichou.springboot;
 
+import com.baichou.springboot.config.LocalSettings;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController  //等价于@Controller 和 @ResponseBody
 @ServletComponentScan//这个就是扫描相应的Servlet包;
 //@Import(value={SpringUtil.class}) //引入不在APP包以及子包中的类，或者未交给spring容器管理的类.或者通过@Bean注入
+@EnableConfigurationProperties({LocalSettings.class})//注入自定义配置文件local.properties
 public class App {
 
     /**

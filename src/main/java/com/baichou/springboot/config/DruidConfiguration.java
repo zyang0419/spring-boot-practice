@@ -1,10 +1,18 @@
-package com.baichou.springboot.util;
+package com.baichou.springboot.config;
 
 /**
  * Created by root on 16-10-21.
  */
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.bind.RelaxedPropertyResolver;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
 
 /**
 
@@ -150,5 +158,112 @@ public class DruidConfiguration {
     }*/
 
 
+    /**
+     * Created by root on 16-10-24.
+     */
+    public static class Mongo {
+    }
 
+    /**
+     * @ConditionOnClass表明该@Configuration仅仅在一定条件下才会被加载，这里的条件是Mongo.class位于类路径上
+     · @EnableConfigurationProperties将Spring Boot的配置文件（application.properties）中的spring.data.mongodb.*
+       属性映射为MongoProperties并注入到MongoAutoConfiguration中。
+     · @ConditionalOnMissingBean说明Spring Boot仅仅在当前上下文中不存在Mongo对象时，才会实例化一个Bean。
+       这个逻辑也体现了Spring Boot的另外一个特性——自定义的Bean优先于框架的默认配置，
+       我们如果显式的在业务代码中定义了一个Mongo对象，那么Spring Boot就不再创建。
+     * Created by root on 16-10-24.
+     */
+    @Configuration
+    @ConditionalOnClass(Mongo.class)
+    @EnableConfigurationProperties(MongoProperties.class)
+    public static class MongoAutoConfiguration {
+        @Autowired
+        private MongoProperties properties;
+
+    }
+
+    @ConfigurationProperties(prefix = "spring.data.mongodb")
+    public static class MongoProperties {
+
+
+        private String host;
+        private int port = 27017;
+        private String uri = "mongodb://localhost/test";
+        private String database;
+
+        public String getDatabase() {
+            return database;
+        }
+
+        public void setDatabase(String database) {
+            this.database = database;
+        }
+
+        public String getHost() {
+            return host;
+        }
+
+        public void setHost(String host) {
+            this.host = host;
+        }
+
+        public int getPort() {
+            return port;
+        }
+
+        public void setPort(int port) {
+            this.port = port;
+        }
+
+        public String getUri() {
+            return uri;
+        }
+
+        public void setUri(String uri) {
+            this.uri = uri;
+        }
+
+
+    }
+
+    /**
+     * Created by zyang0419 on 16-10-24.
+     */
+    @Configuration
+
+    public static class MyEnvironmentAware implements EnvironmentAware {
+
+
+
+        //注入application.properties的属性到指定变量中.
+        @Value("${spring.datasource.url}")
+        private String myUrl;
+
+
+
+        /**
+         *注意重写的方法 setEnvironment 是在系统启动的时候被执行。
+         */
+
+        @Override
+
+        public void setEnvironment(Environment environment) {
+
+            //打印注入的属性信息.
+            System.out.println("myUrl="+myUrl);
+
+            //通过 environment 获取到系统属性.
+            System.out.println(environment.getProperty("JAVA_HOME"));
+
+            //通过 environment 同样能获取到application.properties配置的属性.
+            System.out.println(environment.getProperty("spring.datasource.url"));
+
+            //获取到前缀是"spring.datasource." 的属性列表值.
+            RelaxedPropertyResolver relaxedPropertyResolver = new RelaxedPropertyResolver(environment, "spring.datasource.");
+            System.out.println("spring.datasource.url="+relaxedPropertyResolver.getProperty("url"));
+            System.out.println("spring.datasource.driverClassName="+relaxedPropertyResolver.getProperty("driverClassName"));
+
+        }
+
+    }
 }

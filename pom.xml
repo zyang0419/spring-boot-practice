@@ -73,6 +73,13 @@
       <artifactId>spring-boot-starter-data-jpa</artifactId>
     </dependency>
 
+    <!--spring-boot-configuration:spring boot 配置处理器; -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
     <!-- spring-boot-starter-jdbc 模块  -->
     <!--<dependency>
       <groupId>org.springframework.boot</groupId>
@@ -103,7 +110,7 @@
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
       <version>${servlet-api.verion}</version>
-      <!-- <scope>provided</scope>  -->
+      <scope>provided</scope>
     </dependency>
 
     <!-- fastjson -->
