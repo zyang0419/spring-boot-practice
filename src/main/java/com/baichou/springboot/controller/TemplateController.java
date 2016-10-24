@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Map;
+
 @Controller
 public class TemplateController {
 
@@ -25,4 +27,29 @@ public class TemplateController {
         model.addAttribute("name", name);
         return "template";
     }
+
+    /**
+     * 返回html模板.
+     */
+    @RequestMapping("/helloHtml")
+    public String helloHtml(Map<String,Object> map){
+        map.put("hello","from TemplateController.helloHtml");
+        return"/helloHtml";
+
+    }
+
+    /**
+     * 返回html模板.
+     */
+
+    @RequestMapping("/helloFtl")
+    public String helloFtl(Map<String,Object> map){
+        map.put("hello","from TemplateController.helloFtl");
+        return"/helloFtl";
+
+    }
+
+
+
+
 }

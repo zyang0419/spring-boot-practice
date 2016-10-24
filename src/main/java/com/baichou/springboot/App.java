@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 })
 @RestController  //等价于@Controller 和 @ResponseBody
 @ServletComponentScan//这个就是扫描相应的Servlet包;
+//@Import(value={SpringUtil.class}) //引入不在APP包以及子包中的类，或者未交给spring容器管理的类.或者通过@Bean注入
 public class App {
 
     /**
@@ -89,8 +90,27 @@ public class App {
      */
     @RequestMapping("/")
     public String index() {
-        return "Hello World!";
+        return "Welcome to Spring boot world!";
     }
 
 
+    /*@Bean
+    public JedisPool jedisPool(@Value("${redis.host}") String host,
+                               @Value("${redis.port}") int port) {
+        return new JedisPool(host, port);
+    }*/
+
+    /**
+     * 修改DispatcherServlet默认配置
+     *
+     */
+ /*   @Bean
+    public ServletRegistrationBean dispatcherRegistration(DispatcherServlet dispatcherServlet) {
+        ServletRegistrationBean registration = new ServletRegistrationBean(dispatcherServlet);
+        registration.getUrlMappings().clear();
+        registration.addUrlMappings("*.do");
+        registration.addUrlMappings("*.json");
+        return registration;
+    }
+*/
 }
