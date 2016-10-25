@@ -34,7 +34,7 @@ public class TemplateController {
     @RequestMapping("/helloHtml")
     public String helloHtml(Map<String,Object> map){
         map.put("hello","from TemplateController.helloHtml");
-        return"/helloHtml";
+        return "helloHtml";
 
     }
 
@@ -45,7 +45,7 @@ public class TemplateController {
     @RequestMapping("/helloFtl")
     public String helloFtl(Map<String,Object> map){
         map.put("hello","from TemplateController.helloFtl");
-        return"/helloFtl";
+        return"helloFtl";
 
     }
 

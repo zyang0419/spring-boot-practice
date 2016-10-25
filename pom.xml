@@ -80,6 +80,14 @@
       <optional>true</optional>
     </dependency>
 
+    <!-- 监控管理模块-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+
+
     <!-- spring-boot-starter-jdbc 模块  -->
     <!--<dependency>
       <groupId>org.springframework.boot</groupId>
