@@ -2,7 +2,6 @@ package com.baichou.springboot;
 
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -34,7 +33,7 @@ public class Application {
     public String userProfile(@PathVariable("username") String username) {
         return String.format("user %s", username);
     }
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+   /* @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String loginGet() {
         return "Login Page";
     }
@@ -42,5 +41,5 @@ public class Application {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPost() {
         return "Login Post Request";
-    }
+    }*/
 }

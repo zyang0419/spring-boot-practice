@@ -7,7 +7,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.boot.web.servlet.MultipartConfigFactory;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.MultipartConfigElement;
@@ -111,11 +110,11 @@ public class App {
      * 运行应用：mvn spring-boot:run或在IDE中运行main()方法，
      * 在浏览器中访问http://localhost:8080，Hello World!就出现在了页面中。
      */
-    @RequestMapping("/")
+   /* @RequestMapping("/")
     public String index() {
         return "Welcome to Spring boot world!";
     }
-
+*/
 
     /*@Bean
     public JedisPool jedisPool(@Value("${redis.host}") String host,

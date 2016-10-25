@@ -1,23 +1,4 @@
-package com.baichou.springboot.config;/**
- * Created by root on 16-10-25.
- * <p>
- * redis缓存类
- * redis 缓存配置;
- * 注意：RedisCacheConfig这里也可以不用继承：CachingConfigurerSupport，也就是直接一个普通的Class就好了；
- * 这里主要我们之后要重新实现 key的生成策略，只要这里修改KeyGenerator，其它位置不用修改就生效了。
- * 普通使用普通类的方式的话，那么在使用@Cacheable的时候还需要指定KeyGenerator的名称;这样编码的时候比较麻烦。
- *
- * @author zyang0419
- * @create 2016-10-25 上午9:35
- * <p>
- * redis缓存类
- * redis 缓存配置;
- * 注意：RedisCacheConfig这里也可以不用继承：CachingConfigurerSupport，也就是直接一个普通的Class就好了；
- * 这里主要我们之后要重新实现 key的生成策略，只要这里修改KeyGenerator，其它位置不用修改就生效了。
- * 普通使用普通类的方式的话，那么在使用@Cacheable的时候还需要指定KeyGenerator的名称;这样编码的时候比较麻烦。
- * @author zyang0419
- * @create 2016-10-25 上午9:35
- **/
+package com.baichou.springboot.config;
 
 /**
  * redis缓存类
@@ -32,8 +13,10 @@ package com.baichou.springboot.config;/**
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -42,8 +25,8 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 import java.lang.reflect.Method;
 
-//@Configuration
-//@EnableCaching//启用缓存，这个注解很重要；　和EHCacheConfiguration不可同时使用,CacheManager不唯一
+@Configuration
+@EnableCaching//启用缓存，这个注解很重要；　和EHCacheConfiguration不可同时使用,CacheManager不唯一
 public class RedisCacheConfig extends CachingConfigurerSupport {
 
 
