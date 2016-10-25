@@ -3,6 +3,7 @@ package com.baichou.springboot.service;/**
  */
 
 import com.baichou.springboot.model.DemoInfo;
+import javassist.NotFoundException;
 
 /**
  * demoInfo服务接口
@@ -17,4 +18,12 @@ public interface DemoInfoService {
     public void deleteFromCache(long id);
 
     void test();
+
+    void delete(Long id);
+
+    DemoInfo update(DemoInfo updated) throws NotFoundException;
+
+    DemoInfo findEHCacheById(Long id);
+
+    DemoInfo save(DemoInfo demoInfo);
 }

@@ -4,6 +4,7 @@ package com.baichou.springboot.controller;/**
 
 import com.baichou.springboot.model.DemoInfo;
 import com.baichou.springboot.service.DemoInfoService;
+import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,5 +49,51 @@ public class DemoInfoController  {
             return "ok";
 
         }
+
+
+    @RequestMapping("/test2")
+
+    public String test2(){
+
+        //存入两条数据.
+        DemoInfo demoInfo = new DemoInfo();
+        demoInfo.setName("陈七");
+        demoInfo.setPwd("123456");
+        DemoInfo demoInfo2 = demoInfoService.save(demoInfo);
+
+        //不走缓存.
+        System.out.println(demoInfoService.findEHCacheById(demoInfo2.getId()));
+        //走缓存.
+        System.out.println(demoInfoService.findEHCacheById(demoInfo2.getId()));
+
+        demoInfo = new DemoInfo();
+        demoInfo.setName("赵六");
+        demoInfo.setPwd("123456");
+        DemoInfo demoInfo3 = demoInfoService.save(demoInfo);
+        //不走缓存.
+        System.out.println(demoInfoService.findEHCacheById(demoInfo3.getId()));
+        //走缓存.
+        System.out.println(demoInfoService.findEHCacheById(demoInfo3.getId()));
+        System.out.println("============修改数据=====================");
+
+        //修改数据.
+        DemoInfo updated = new DemoInfo();
+        updated.setName("赵六-updated");
+        updated.setPwd("123456");
+        updated.setId(demoInfo3.getId());
+        try {
+            System.out.println(demoInfoService.update(updated));
+        } catch (NotFoundException e) {
+            e.printStackTrace();
+
+        }
+
+        //不走缓存.
+        System.out.println(demoInfoService.findEHCacheById(updated.getId()));
+        return "ok";
+
+    }
+
+
 
 }

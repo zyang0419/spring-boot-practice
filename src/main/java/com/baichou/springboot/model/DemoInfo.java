@@ -29,6 +29,17 @@ public class DemoInfo implements Serializable {
 
     private String pwd;
 
+    private int state;
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
+    }
+
+
     public long getId() {
         return id;
 
@@ -59,12 +70,13 @@ public class DemoInfo implements Serializable {
 
     }
 
-
-
     @Override
     public String toString() {
-        return"DemoInfo [id=" + id + ", name=" + name + ", pwd=" + pwd + "]";
-
+        return "DemoInfo{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", state=" + state +
+                '}';
     }
-
 }
