@@ -23,6 +23,9 @@
     <servlet-api.verion>3.1.0</servlet-api.verion>
     <junit.version>4.12</junit.version>
     <fastjson.version>1.2.18</fastjson.version>
+    <jackson-databind.version>2.8.4</jackson-databind.version>
+    <jackson.version></jackson.version>
+    <httpclient.version>4.5.2</httpclient.version>
     <druid.version>1.0.26</druid.version>
     <shiro-spring.version>1.3.2</shiro-spring.version>
 
@@ -173,11 +176,21 @@
     </dependency>
 
     <!-- fastjson -->
-    <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-      <version>${fastjson.version}</version>
-    </dependency>
+       <dependency>
+         <groupId>com.alibaba</groupId>
+         <artifactId>fastjson</artifactId>
+         <version>${fastjson.version}</version>
+       </dependency>
+         <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+          </dependency>
+          <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+          </dependency>
 
     <!-- junit -->
     <dependency>
@@ -206,6 +219,18 @@
           <!--<configuration>
               <fork>true</fork>
           </configuration>-->
+        <!-- debug
+          mvn spring-boot:run -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9090"
+
+         ./startup.sh jpda
+        -->
+    <!--    <configuration>
+          <jvmArguments>
+            -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005
+          </jvmArguments>///////////////////////////////////////////////////////////////////////
+        </configuration>-->
+
+
 
         <dependencies>
           <dependency>

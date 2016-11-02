@@ -55,7 +55,6 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
      * @return
 
      */
-
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
 

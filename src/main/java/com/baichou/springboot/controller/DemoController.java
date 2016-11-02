@@ -23,6 +23,8 @@ public class DemoController {
     public String rest(){
         String url = "http://localhost:9090/demo/json";
         JSONObject json = restTemplate.getForEntity(url, JSONObject.class).getBody();
+        System.out.println("json********************"+json.toString());
+        System.out.println("****************************************");
         return json.toJSONString();
     }
 

@@ -1,11 +1,8 @@
-package com.baichou.springboot.config;/**
- * Created by root on 16-10-25.
- */
+package com.baichou.springboot.config;
 
 
 import com.baichou.springboot.controller.MyShiroRealm;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
-import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -62,7 +59,7 @@ public class ShiroConfiguration {
 
         //<!-- 过滤链定义，从上向下顺序执行，一般将 /**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
         //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
-        filterChainDefinitionMap.put("/**", "authc");
+         filterChainDefinitionMap.put("/**", "authc");
 
         // 如果不设置默认会自动寻找Web工程根目录下的"/login.jsp"页面
         shiroFilterFactoryBean.setLoginUrl("/login");
@@ -101,7 +98,7 @@ public class ShiroConfiguration {
         //设置realm.
         securityManager.setRealm(myShiroRealm());
         //注入缓存管理器;
-        securityManager.setCacheManager(ehCacheManager());//这个如果执行多次，也是同样的一个对象;
+       // securityManager.setCacheManager(ehCacheManager());//这个如果执行多次，也是同样的一个对象;
         //注入记住我管理器;
         securityManager.setRememberMeManager(rememberMeManager());
         return securityManager;
@@ -150,14 +147,14 @@ public class ShiroConfiguration {
 
      */
 
-    @Bean
+    /*@Bean
     public EhCacheManager ehCacheManager(){
         System.out.println("ShiroConfiguration.getEhCacheManager()");
         EhCacheManager cacheManager = new EhCacheManager();
         cacheManager.setCacheManagerConfigFile("classpath:config/ehcache-shiro.xml");
         return cacheManager;
 
-    }
+    }*/
 
     /**
      * cookie对象;
